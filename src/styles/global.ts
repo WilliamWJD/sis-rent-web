@@ -7,8 +7,15 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    button{
+        border: none;
+        cursor: pointer;
+    }
+
     body{
-        background-color: ${(props) => props.theme.gray};
+        background-color: ${(props) => props.theme["gray-900"]};
+        color: ${(props) => props.theme["gray-300"]};
+        -webkit-font-smoothing: antialiased;
     }
 
     body, input-security, textarea, button{
