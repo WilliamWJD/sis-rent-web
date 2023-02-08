@@ -26,7 +26,6 @@ export function SignIn() {
     });
 
     function handleSignIn(data: SignFormData) {
-        console.log(data);
         signIn({
             email: data.email,
             senha: data.password,

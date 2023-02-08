@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useState } from "react";
+import { toast } from "react-toastify";
 import { api } from "../services/api";
 
 interface SignInCredentials {
@@ -53,7 +54,7 @@ function AuthProvider({ children }: any) {
 
             setData({ token, user });
         } catch (error) {
-            alert("usuário ou senha inválido");
+            toast.error("Usuário ou senha inválido!");
         }
     }, []);
 

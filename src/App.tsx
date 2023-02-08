@@ -1,4 +1,6 @@
 import { ThemeProvider } from "styled-components";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { AuthProvider } from "./contexts/AuthContext";
 
@@ -10,6 +12,7 @@ export function App() {
     return (
         <>
             <ThemeProvider theme={defaultTheme}>
+                <ToastContainer />
                 <GlobalStyle />
                 <AuthProvider>
                     <SignIn />
