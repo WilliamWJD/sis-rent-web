@@ -1,6 +1,7 @@
 import * as zod from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Navigate } from "react-router-dom";
 
 import { useAuth } from "../../contexts/AuthContext";
 import { Container, Content } from "./styles";
@@ -15,7 +16,7 @@ const signInValidationSchema = zod.object({
 type SignFormData = zod.infer<typeof signInValidationSchema>;
 
 export function SignIn() {
-    const { signIn } = useAuth();
+    const { signIn, user } = useAuth();
 
     const { register, handleSubmit } = useForm<SignFormData>({
         resolver: zodResolver(signInValidationSchema),
@@ -32,26 +33,30 @@ export function SignIn() {
         });
     }
 
-    return (
-        <Container>
-            <Content>
-                <img src={SignImage} alt="" />
-                <form action="" onSubmit={handleSubmit(handleSignIn)}>
-                    <input
-                        id="email"
-                        type="text"
-                        placeholder="E-mail"
-                        {...register("email")}
-                    />
-                    <input
-                        id="password"
-                        type="password"
-                        placeholder="******"
-                        {...register("password")}
-                    />
-                    <button type="submit">Entrar</button>
-                </form>
-            </Content>
-        </Container>
-    );
+    if (user) {
+        return <Navigate to="/dashboard" />;
+    } else {
+        return (
+            <Container>
+                <Content>
+                    <img src={SignImage} alt="" />
+                    <form action="" onSubmit={handleSubmit(handleSignIn)}>
+                        <input
+                            id="email"
+                            type="text"
+                            placeholder="E-mail"
+                            {...register("email")}
+                        />
+                        <input
+                            id="password"
+                            type="password"
+                            placeholder="******"
+                            {...register("password")}
+                        />
+                        <button type="submit">Entrar</button>
+                    </form>
+                </Content>
+            </Container>
+        );
+    }
 }
