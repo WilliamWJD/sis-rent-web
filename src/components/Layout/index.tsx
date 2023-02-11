@@ -15,21 +15,21 @@ export function Layout() {
                     />
                     <nav>
                         <ul>
-                            <li>
-                                <Link to="#">Inicio</Link>
-                            </li>
-                            <li>
-                                <Link to="#">Inquilinos</Link>
-                            </li>
-                            <li>
-                                <Link to="#">Imóveis</Link>
-                            </li>
-                            <li>
-                                <Link to="#">Locação</Link>
-                            </li>
-                            <li>
-                                <Link to="#">Recibos</Link>
-                            </li>
+                            <Link to="/dashboard">
+                                <li>Inicio</li>
+                            </Link>
+                            <Link to="#">
+                                <li>Inquilinos</li>
+                            </Link>
+                            <Link to="#">
+                                <li>Imóveis</li>
+                            </Link>
+                            <Link to="/tenant">
+                                <li>Locação</li>
+                            </Link>
+                            <Link to="#">
+                                <li>Recibos</li>
+                            </Link>
                         </ul>
                     </nav>
                     <div>

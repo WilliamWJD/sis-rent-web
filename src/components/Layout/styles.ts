@@ -10,6 +10,7 @@ export const Header = styled.header`
     margin: 0 auto;
     height: 7rem;
     background-color: ${(props) => props.theme["gray-800"]};
+    margin-bottom: 3rem;
 
     display: flex;
     align-items: center;
@@ -33,16 +34,13 @@ export const Content = styled.div`
             flex-direction: row;
             list-style: none;
 
-            li {
+            a {
                 margin-right: 3rem;
+                text-decoration: none;
+                color: ${(props) => props.theme["gray-300"]};
 
                 &:last-child {
                     margin-right: 0;
-                }
-
-                a {
-                    text-decoration: none;
-                    color: ${(props) => props.theme["gray-300"]};
                 }
             }
         }
