@@ -7,6 +7,8 @@ import { useAuth } from "../../contexts/AuthContext";
 import { Container, Content } from "./styles";
 
 import SignImage from "../../images/signInImage.svg";
+import { ZodObject } from "zod";
+import { toast } from "react-toastify";
 
 const signInValidationSchema = zod.object({
     email: zod.string().email("Digite um e-mail válido"),
@@ -27,10 +29,16 @@ export function SignIn() {
     });
 
     function handleSignIn(data: SignFormData) {
-        signIn({
-            email: data.email,
-            senha: data.password,
-        });
+        try {
+            signIn({
+                email: data.email,
+                senha: data.password,
+            });
+        } catch (error) {
+            if (error instanceof ZodObject) {
+                toast.error("teste");
+            }
+        }
     }
 
     if (user) {
